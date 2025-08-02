@@ -10,8 +10,6 @@ A modern, local-first AI chatbot powered by the DeepSeek model via the OpenRoute
 
 •	Real-time Chat Simulation: Includes features like aligned messages and a typing animation for a dynamic user experience.
 
-•	Chat History: Maintains a record of the conversation within the current session.
-
 •	Clean Architecture: Well-structured Node.js Express backend and a simple HTML/CSS/Vanilla JavaScript frontend.
 
 •	Easy UI Customization: The frontend is designed to be easily modified to suit your aesthetic preferences.
