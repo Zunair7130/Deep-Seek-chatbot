@@ -1,136 +1,146 @@
 Deep-Seek-chatbot
+
 A modern, local-first AI chatbot powered by the DeepSeek model via the OpenRouter API. This project provides a robust backend and a simple, customizable frontend, allowing for quick setup and interaction with a powerful large language model.
 
-✨ Features
-Local-First Experience: Run the chatbot entirely on your local machine.
+✨ Features:
 
-DeepSeek Integration: Seamlessly connects to the DeepSeek AI model through the OpenRouter API.
+•	Local-First Experience:  Run the chatbot entirely on your local machine.
 
-Real-time Chat Simulation: Includes features like aligned messages and a typing animation for a dynamic user experience.
+•	DeepSeek Integration: Seamlessly connects to the DeepSeek AI model through the OpenRouter API.
 
-Chat History: Maintains a record of the conversation within the current session.
+•	Real-time Chat Simulation: Includes features like aligned messages and a typing animation for a dynamic user experience.
 
-Clean Architecture: Well-structured Node.js Express backend and a simple HTML/CSS/Vanilla JavaScript frontend.
+•	Chat History: Maintains a record of the conversation within the current session.
 
-Easy UI Customization: The frontend is designed to be easily modified to suit your aesthetic preferences.
+•	Clean Architecture: Well-structured Node.js Express backend and a simple HTML/CSS/Vanilla JavaScript frontend.
 
-Secure API Key Handling: Utilizes environment variables for secure storage of your OpenRouter API key.
+•	Easy UI Customization: The frontend is designed to be easily modified to suit your aesthetic preferences.
 
-Robust Error Handling: The backend includes comprehensive error handling for API requests and JSON parsing.
+•	Secure API Key Handling: Utilizes environment variables for secure storage of your OpenRouter API key.
 
-⚙️ Technologies Used
-Backend:
+•	Robust Error Handling: The backend includes comprehensive error handling for API requests and JSON parsing.
 
-Node.js: JavaScript runtime environment.
+⚙️ Technologies Used:
 
-Express.js: Fast, unopinionated, minimalist web framework for Node.js.
+•	Backend:
 
-dotenv: Module to load environment variables from a .env file.
+o	Node.js: JavaScript runtime environment.
 
-https module: Node.js built-in module for making HTTP requests over SSL/TLS.
+o	Express.js: Fast, unopinionated, minimalist web framework for Node.js.
 
-Frontend:
+o	dotenv: Module to load environment variables from a .env file.
 
-HTML5: Structure of the web page.
+o	https module: Node.js built-in module for making HTTP requests over SSL/TLS.
 
-CSS3: Styling of the user interface.
+•	Frontend:
 
-Vanilla JavaScript: Client-side interactivity and logic.
+o	HTML5: Structure of the web page.
 
-AI Model Integration:
+o	CSS3: Styling of the user interface.
 
-DeepSeek AI: The large language model providing the intelligence.
+o	Vanilla JavaScript: Client-side interactivity and logic.
 
-OpenRouter API: An API gateway to access various LLMs, including DeepSeek.
+•	AI Model Integration:
 
-🚀 How It Works (Architecture & Data Flow)
+o	DeepSeek AI: The large language model providing the intelligence.
+o	OpenRouter API: An API gateway to access various LLMs, including DeepSeek.
+
+🚀 How It Works (Architecture & Data Flow):
+
 The Deep-Seek-chatbot operates with a clear client-server architecture:
 
-Frontend (Client-side):
+1.	Frontend (Client-side):
+   
+o	The user interacts with the interface defined by public/index.html and public/script.js.
 
-The user interacts with the interface defined by public/index.html and public/script.js.
+o	When a user types a message and submits it, public/script.js captures this input.
 
-When a user types a message and submits it, public/script.js captures this input.
+o	A POST request containing the user's message is sent to the backend endpoint /ask.
 
-A POST request containing the user's message is sent to the backend endpoint /ask.
+2.	Backend (Server-side):
 
-Backend (Server-side):
+o	The server.js (an Express.js application) receives the POST request at the /ask endpoint.
 
-The server.js (an Express.js application) receives the POST request at the /ask endpoint.
+o	It extracts the user's message from the request body.
 
-It extracts the user's message from the request body.
+o	Using the https module, the backend constructs and sends a POST request to the OpenRouter API (https://openrouter.ai/api/v1/chat/completions). This request includes the deepseek/deepseek-chat model identifier, the user's message, and necessary authentication headers (including your securely loaded DEEPSEEK_API_KEY).
 
-Using the https module, the backend constructs and sends a POST request to the OpenRouter API (https://openrouter.ai/api/v1/chat/completions). This request includes the deepseek/deepseek-chat model identifier, the user's message, and necessary authentication headers (including your securely loaded DEEPSEEK_API_KEY).
 
-The backend then waits for the response from the OpenRouter API.
+o	The backend then waits for the response from the OpenRouter API.
 
-Upon receiving the response, it parses the JSON payload. Crucially, it extracts the AI's reply from the nested json.choices[0].message.content path.
+o	Upon receiving the response, it parses the JSON payload. Crucially, it extracts the AI's reply from the nested json.choices[0].message.content path.
 
-Robust error handling is in place to catch issues like invalid JSON or missing reply content from the API.
+o	Robust error handling is in place to catch issues like invalid JSON or missing reply content from the API.
 
-Finally, the AI's reply (or an error message) is sent back as a JSON response to the frontend.
+o	Finally, the AI's reply (or an error message) is sent back as a JSON response to the frontend.
 
-Frontend (Display):
+3.	Frontend (Display):
+   
+o	public/script.js receives the AI's reply from the backend.
 
-public/script.js receives the AI's reply from the backend.
+o	It then updates the chat interface to display the AI's response, maintaining the chat history and providing a smooth user experience with typing animations.
 
-It then updates the chat interface to display the AI's response, maintaining the chat history and providing a smooth user experience with typing animations.
+🛠️ Installation and Setup:
 
-🛠️ Installation and Setup
 Follow these steps to get the Deep-Seek-chatbot running on your local machine:
 
-Clone the repository:
+1.	Clone the repository:
+   
+2.	git clone https://github.com/Zunair7130/Deep-Seek-chatbot.git
 
-git clone https://github.com/Zunair7130/Deep-Seek-chatbot.git
-cd Deep-Seek-chatbot
+3.	cd Deep-Seek-chatbot
+	
+4.	Install dependencies:
+	
+5.	npm install
+	
+6.	Obtain your OpenRouter API Key:
+    	
+o	Go to OpenRouter AI Keys.
 
-Install dependencies:
+o	Sign up or log in.
 
-npm install
+o	Generate a new API key.
 
-Obtain your OpenRouter API Key:
+7.	Create a .env file:
+    
+o	In the root directory of the project (the Deep-Seek-chatbot folder), create a new file named .env.
 
-Go to OpenRouter AI Keys.
+o	Add your OpenRouter API key to this file in the following format:
 
-Sign up or log in.
+o	DEEPSEEK_API_KEY=sk-your-openrouter-api-key-here
 
-Generate a new API key.
+Important!: Replace sk-your-openrouter-api-key-here with the actual API key you obtained from OpenRouter.
 
-Create a .env file:
-
-In the root directory of the project (the Deep-Seek-chatbot folder), create a new file named .env.
-
-Add your OpenRouter API key to this file in the following format:
-
-DEEPSEEK_API_KEY=sk-your-openrouter-api-key-here
-
-Important: Replace sk-your-openrouter-api-key-here with the actual API key you obtained from OpenRouter.
-
-Start the server:
-
-node server.js
+8.	Start the server:
+   
+9.	node server.js
 
 You should see a message in your console: 🚀 Server running at http://localhost:3000.
 
-Open in browser:
+10.	Open in browser:
+    
+o	Navigate to http://localhost:3000 in your web browser.
 
-Navigate to http://localhost:3000 in your web browser.
+o	You can now start chatting with the DeepSeek AI model!
 
-You can now start chatting with the DeepSeek AI model!
+🎨 UI Customization:
 
-🎨 UI Customization
-The frontend UI is intentionally kept basic to allow for easy customization. You can personalize the look and feel of your chatbot by modifying the following files in the public/ directory:
+The frontend UI is kept basic to allow for easy customization. You can personalize the look and feel of your chatbot by modifying the following files in the public/ directory:
 
-index.html: Adjust the HTML structure, add new elements, or modify existing ones.
+•	index.html: Adjust the HTML structure, add new elements, or modify existing ones.
 
-style.css: Change colors, fonts, layouts, animations, and overall visual design.
+•	style.css: Change colors, fonts, layouts, animations, and overall visual design.
 
-script.js: Enhance interactivity, add new frontend features, or modify how messages are displayed.
+•	script.js: Enhance interactivity, add new frontend features, or modify how messages are displayed.
 
 Feel free to unleash your creativity and make the chatbot truly your own!
 
-🧑‍💻 Developer
+🧑💻 Developer:
+
 This project was developed by Zunair7130.
 
-📄 License
-This project is open-source and available under the MIT Lice
+📄 License:
+
+This project is open-source and available under the MIT License.
+
