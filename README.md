@@ -1,6 +1,8 @@
 Deep-Seek-chatbot
 A modern, local-first AI chatbot powered by the DeepSeek model via the OpenRouter API. This project provides a robust backend and a simple, customizable frontend, allowing for quick setup and interaction with a powerful large language model.
 
+You can see here how it looks like: https://ai.zazpro.online/
+
 ✨ Features
 Local-First Experience: Run the chatbot entirely on your local machine.
 
@@ -133,4 +135,5 @@ Feel free to unleash your creativity and make the chatbot truly your own!
 This project was developed by Zunair7130.
 
 📄 License
+
 This project is open-source and available under the MIT Lice
