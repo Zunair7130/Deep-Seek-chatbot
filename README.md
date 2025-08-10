@@ -131,7 +131,7 @@ script.js: Enhance interactivity, add new frontend features, or modify how messa
 
 Feel free to unleash your creativity and make the chatbot truly your own!
 
-If you want to deploy it so you can you can visit my this repo wher you can make the same project online: https://github.com/Zunair7130/Vercel-deployment
+If you want to deploy it so you can visit my this repo wher you can make the same project online: https://github.com/Zunair7130/Vercel-deployment
 
 🧑‍💻 Developer
 This project was developed by Zunair7130.
@@ -139,4 +139,5 @@ This project was developed by Zunair7130.
 📄 License
 
 This project is open-source and available under the MIT Lice
+
 
